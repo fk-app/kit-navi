@@ -1,0 +1,72 @@
+<%-include('./header') %>
+
+<hr>
+
+<h3>フリーワード検索</h3>
+<form method="post" action="/search" class="s-flex">
+  <input type="text" id="sword" name="sword" class="s-box">
+  <input type="submit" value="検索" class="s-btn">
+</form>
+
+<hr>
+<p class="sp">例）「c-3c」「総合研究棟」「図書館」</p>
+<p class="sp">※検索枠には１つのキーワードを入力してください。空白は入れないでください。また、数字・アルファベット・記号には半角文字を使用してください。</p>
+<p class="sp">※検索結果に希望する行き先があらわれない場合は、より短いキーワードをお試しください。</p>
+<hr>
+
+
+<% if(enter!="null"){ %>
+
+<h3>「<%= enter %>」の検索結果</h3>
+
+<div class="all-item" width=auto>
+  <% for(let i in data2){ %>
+
+    <div class="one-item">
+
+      <img class="info-img" src="../public/images/g-img/<%= data2[i].inroute %>.png" alt="" width="108px" height="81px">
+      <p class="info-txt"><%= data1[Number(changer[  String(data2[i].outroute)  ])].bname %><br><%= data2[i].name %></p>
+      
+      <button class="route-btn" onclick="location.href='/view?id=<%= data2[i].id %>'">GO</button>
+      
+    </div>
+
+  <% } %>
+  <% if(data2==""){ %>
+    <p class="sp">申し訳ございません、候補が見つかりませんでした。</p>
+    <p class="sp">別の短いキーワードを入力してください。</p>
+  <% } %>
+
+</div>
+<% } %>
+<hr>
+
+<h3>よく検索される場所</h3>
+
+
+<div class="all-item" width=auto>
+  <% i=12 %>
+  <div class="one-item">
+    <img class="info-img" src="../public/images/g-img/<%= data2a[i].inroute %>.png" alt="" width="108px" height="81px">
+    <p class="info-txt"><%= data1[Number(changer[  String(data2a[i].outroute)  ])].bname %><br><%= data2a[i].name %></p>
+    <button class="route-btn" onclick="location.href='/view?id=<%= data2a[i].id %>'">GO</button> 
+  </div>
+  <% i=18 %>
+  <div class="one-item">
+    <img class="info-img" src="../public/images/g-img/<%= data2a[i].inroute %>.png" alt="" width="108px" height="81px">
+    <p class="info-txt"><%= data1[Number(changer[  String(data2a[i].outroute)  ])].bname %><br><%= data2a[i].name %></p>
+    <button class="route-btn" onclick="location.href='/view?id=<%= data2a[i].id %>'">GO</button> 
+  </div>
+  <% i=36 %>
+  <div class="one-item">
+    <img class="info-img" src="../public/images/g-img/<%= data2a[i].inroute %>.png" alt="" width="108px" height="81px">
+    <p class="info-txt"><%= data1[Number(changer[  String(data2a[i].outroute)  ])].bname %><br><%= data2a[i].name %></p>
+    <button class="route-btn" onclick="location.href='/view?id=<%= data2a[i].id %>'">GO</button> 
+  </div>
+</div>
+
+<hr>
+
+
+<%-include('./footer') %>
+

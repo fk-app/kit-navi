@@ -1,0 +1,18 @@
+<!--h1><%= message %></h1>
+<h2><%= error.status %></h2>
+<pre><%= error.stack %></pre-->
+
+
+<%-include('./header') %>
+
+<h2 id="s1">エラー</h2>
+<p>申し訳ございません。お探しのページが見つかりません。URLに間違えがないかご確認ください。<br>混雑状況は以下のボタンからご確認頂けます。</p>
+<button class="btn-square" onclick="location.href='/view'">混雑状況確認</button>
+
+
+<h3><%= error.status %>&nbsp;&nbsp;&nbsp;<%= message %></h3>
+<p><%= error.stack %></p>
+
+
+<%-include('./footer') %>
+
